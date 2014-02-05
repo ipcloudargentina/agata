@@ -77,8 +77,7 @@ sslcity='Chicago'
 
 date="1-25-2014"						# Last Updated On
 version="2.6"							# Script Version
-
-osver="Cent OS/RHEL x86_64"				# Script ID
+osver="Cent OS/RHEL x86_64"				        # Script ID
 baruwaver="2.0.1"						# Baruwa Version
 centalt="6-1"							# CenAlt Version
 epel="6-8"								# EPEL Version
@@ -468,6 +467,9 @@ else
 			echo "Good, It looks as though EPEL $epel is already installed. Skipping"; sleep 2
 		else
 			rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-$epel.noarch.rpm
+			yum remove httpd iptables
+			/etc/init.d/iptables stop
+			setenforce 0
 	fi
 
 	if rpm -q --quiet centalt-release-$centalt;

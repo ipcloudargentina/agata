@@ -1,0 +1,25 @@
+#! /bin/bash
+TITULO="Kloxo Install"
+##################################### V A R I A B L E ###########################################################
+MAILSOPORTE="soporte@dnsargentina.com.ar" MAILCLIENTE="cliente@dnsargentina.com.ar"
+UPTIME="U P T I M E:`uptime`" EQUIPO="E Q U I P O: `hostname -f`"
+LINEA="------------------------------------------- IP C L O U D ----------------------------------------------------"
+##################################### F I N N N N ###############################################################
+sed -i 's/plugins=1/plugins=0/' /etc/yum.conf
+yum remove -y samba
+yum install -y wget http
+yum install -y
+yum update -y && yum upgrade -y
+setenforce 0
+echo "SELINUX=disabled" > /etc/selinux/config
+wget http://download.lxcenter.org/download/kloxo/production/kloxo-installer.sh
+sh ./kloxo-installer.sh --type=master
+/script/version >> /tmp/kloxo-install.log
+LXLOG=/tmp/kloxo-install.log
+############################################################################################################
+if [ -s $LXLOG ]; then                                                                                     #
+mail -s "$TITULO `hostname -f`"  $MAILCLIENTE < $LXLOG                                                     #
+mail -s "$TITULO `hostname -f`"  $MAILSOPORTE < $LXLOG                                                     #
+rm $LXLOG                                                                                                  #
+fi                                                                                                         #
+############################################################################################################

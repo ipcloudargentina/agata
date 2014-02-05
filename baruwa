@@ -11,9 +11,9 @@ export LANG=C
 
 
 # +---------------------------------------------------+
-# Automated Install
-#   If you would like a completely automated install
-#   Fill the required fields below.
+# Instalacion Automatica
+# If you would like a completely automated install
+# Fill the required fields below.
 # +---------------------------------------------------+
 
 # Set 1 to Use the autocomplete. 0 to do prompts.
@@ -26,7 +26,7 @@ usepause=0
 pssqlpass=MiClave
 
 # RabbitMQ Password
-rabbpass=MIClave
+rabbpass=MiClave
 
 # Baruwa Admin Email
 admemail=admin@ipcloud.com.ar
@@ -53,7 +53,7 @@ adminemail=admin@ipcloud.com.ar
 timezone=America/Chicago
 
 # MailScanner Organization Name - Long
-msorgnamelong='Your Organization'
+msorgnamelong='IPCloud'
 
 # MailScanner Organization Name - Short (No Spaces)
 msorgname='YourOrganization'
